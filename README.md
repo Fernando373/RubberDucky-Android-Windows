@@ -1,1 +1,3 @@
 # RubberDucky-Android-Windows
+Un Rubber Ducky podemos decir que es un pendrive modificado. Cuando ponemos una memoria USB en el ordenador, podemos copiar y pegar archivos fácilmente. Actúa como una memoria donde podemos alojar fotos, documentos o cualquier carpeta siempre que no supere el espacio de almacenamiento disponible.
+En un pendrive incluso podemos programar scripts para que copie archivos desde un ordenador, o viceversa. Sin embargo para que ese script se ejecute vamos a tener que abrir la memoria USB y hacer doble clic encima del archivo correspondiente. No es algo que se realice de forma automática, sin interacción.
